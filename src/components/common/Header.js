@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 
 const Header = () => {
   const activeStyle = { color: "#F15B2A" };
+  console.log("*******" + React.version);
 
   return (
     <nav>
