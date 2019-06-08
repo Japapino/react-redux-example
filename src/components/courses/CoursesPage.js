@@ -1,5 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
+import * as courseActions from " ../redux/actions/courseActions";
+import propTypes from "prop-types";
 
 class CoursesPage extends React.Component {
   state = {
@@ -15,6 +17,7 @@ class CoursesPage extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault(); //keeps page from reloading
+    this.props.dispatch(courseActions.createCourse); //have to call actions through dispatch or it wont do anything
     alert(this.state.course.title);
   };
 
@@ -35,13 +38,10 @@ class CoursesPage extends React.Component {
 }
 
 //Be Specific, only ask for data your component needs.
-function mapStateToProps(state, ownProps) {
+function mapStateToProps(state) {
   return {
     courses: state.courses
   };
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(CoursesPage);
+export default connect(mapStateToProps)(CoursesPage);
