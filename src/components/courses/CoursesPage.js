@@ -1,14 +1,19 @@
 import React from "react";
 import { connect } from "react-redux";
-import * as courseActions from " ../redux/actions/courseActions";
-import propTypes from "prop-types";
+import * as courseActions from "../../redux/actions/courseActions";
+import PropTypes from "prop-types";
 
 class CoursesPage extends React.Component {
-  state = {
-    course: {
-      title: ""
-    }
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      course: {
+        title: ""
+      }
+    };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
   handleChange = event => {
     const course = { ...this.state.course, title: event.target.value };
@@ -17,8 +22,8 @@ class CoursesPage extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault(); //keeps page from reloading
-    this.props.dispatch(courseActions.createCourse); //have to call actions through dispatch or it wont do anything
-    alert(this.state.course.title);
+    debugger;
+    this.props.dispatch(courseActions.createCourse(this.state.course)); //have to call actions through dispatch or it wont do anything
   };
 
   render() {
@@ -32,13 +37,22 @@ class CoursesPage extends React.Component {
           value={this.state.course.title}
         />
         <input type="submit" value="Save" />
+        {this.props.courses.map(course => (
+          <div key={course.title}>{course.title}</div>
+        ))}
       </form>
     );
   }
 }
 
+CoursesPage.propTypes = {
+  courses: PropTypes.array.isRequired,
+  dispatch: PropTypes.func.isRequired
+};
+
 //Be Specific, only ask for data your component needs.
 function mapStateToProps(state) {
+  debugger;
   return {
     courses: state.courses
   };
