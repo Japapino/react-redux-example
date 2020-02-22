@@ -81,8 +81,6 @@
       "jest": true
     },
     "rules": {
-      "no-debugger": "on",
-      "no-console": "on",
       "no-unused-vars": "warn",
       "react/prop-types": "warn"
     },

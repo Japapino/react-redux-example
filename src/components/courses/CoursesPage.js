@@ -22,7 +22,6 @@ class CoursesPage extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault(); //keeps page from reloading
-    debugger;
     this.props.dispatch(courseActions.createCourse(this.state.course)); //have to call actions through dispatch or it wont do anything
   };
 
@@ -52,7 +51,6 @@ CoursesPage.propTypes = {
 
 //Be Specific, only ask for data your component needs.
 function mapStateToProps(state) {
-  debugger;
   return {
     courses: state.courses
   };
