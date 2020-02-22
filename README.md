@@ -1,3 +1,5 @@
+## Note: This is not my project. I use this repository for learning and practice purposes. 
+
 # Starter Kit for [Building Applications in React and Redux](http://www.pluralsight.com/author/cory-house) on Pluralsight
 
 ## Get Started
